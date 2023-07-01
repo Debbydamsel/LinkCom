@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "start": "nodemon ./src/app.ts",
-    "dev": "node ./build/app.js",
+    "dev": "nodemon ./src/app.ts",
+    "start": "node ./build/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
