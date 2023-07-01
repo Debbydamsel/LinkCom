@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up page</title>
+    <link rel="stylesheet" href="/css/styles3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="div-class">
+
+        <h1>Create an account</h1>
+        <h5>Enter the fields below to get started</h5>
+
+        <form action="/users/sign-up" method="post">
+            
+            <input class="msg" placeholder="Username" name="username" required>
+            
+            <hr>
+
+            <input class="msg" placeholder="Email" name="email" required>
+
+            <hr>
+
+            <input class="msg" placeholder="Password" name="password" required>
+            
+            <hr>
+            <br>
+            <button class="button" value="submit" type="submit">Create Account</button>
+        </form>
+        
+        <p>Already have an account? <span><a href="/users/log-in">Login</a></span></p>
+
+    </div>
+
+    <script>
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", async(e) => {
+            e.preventDefault();
+
+            const username = form.username.value;
+            const email = form.email.value;
+            const password = form.password.value;
+
+            try {
+                const res = await fetch("/users/sign-up", {
+                    method: "POST",
+                    body: JSON.stringify({username, email, password}),
+                    headers: {"Content-Type": "application/json"}
+                });
+                const data = await res.json();
+                console.log(data);
+                if (data.user) {
+                    location.assign("/api/url/getAuthPage");
+                };
+            } catch (error) {
+                console.log(error);
+                
+            }
+        })
+    </script>
+</body>
+</html>
