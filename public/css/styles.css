@@ -1,0 +1,131 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.5);;
+    text-align: center;
+    height: 100vh;
+    width: 100vw;
+}
+a {
+    text-decoration: none;
+}
+
+#logo {
+    font-family: 'Rye', 'cursive';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 45px;
+    color: #3D4F91;
+    padding-left: 100px;
+
+}
+.btn-one {
+    background: rgba(61, 79, 145, 0.1);
+    border: 1px solid #3D4F91;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #3D4F91;
+    font-family: 'Poppins', 'sans-serif';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+
+}
+.btn-one:hover {
+    background: #3D4F91;
+    color: #FFFFFF;
+}
+.btn-two {
+    background: #3D4F91;
+    border-radius: 6px;
+    font-family: 'Poppins', 'sans-serif';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-left: -8px;
+}
+.btn-two:hover {
+    background: rgba(61, 79, 145, 0.1);
+    color: #3D4F91;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+    padding: 0 150px 30px 50px;
+}
+.auth {
+    margin-right: 20px;
+    font-size: 1rem;
+    padding: 10px;
+    width: 88px;
+    height: 40px;
+}
+.middle-box {
+    padding: 0 120px;
+    background-color: rgba(61, 79, 145, 0.1);
+    display: flex;
+    align-items: center;
+    
+   
+}
+
+.middle-box-one > h1 {
+    font-family: 'Poppins', 'sans-serif';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 60px;
+    color: #3D4F91;
+}
+
+p {
+    overflow-wrap: break-word;
+    width:60%;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #292A30;
+    margin-top: -20px;
+}
+    
+img {
+    width: 800px;
+    height: 300px;
+}
+
+.middle-box-one {
+    text-align: left;
+    padding: 20px;
+}
+form {
+    padding-top: 40px;
+}
+
+
+form.last-box a {
+    font-family: 'Poppins', 'sans-serif';
+    padding: 10px;
+    font-size: 1.5rem;
+    border-left: none;
+    cursor: pointer;
+    margin-left: -5px;
+    background: #3D4F91;
+    border-radius: 6px;
+    color: #FFFFFF;
+    width: 70%;
+}
+form.last-box a:hover {
+    background: rgba(61, 79, 145, 0.1);
+    color: #3D4F91;
+}

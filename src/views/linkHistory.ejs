@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate short link page</title>
+    <link rel="stylesheet" href="/css/styles2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&family=Rye&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1 id="logo">LinkCom</h1>
+
+        <div class="greeting">
+            <h1>Welcome, <%= currentUser %>!</h1>
+            <h2>Trim URLs</h2>
+            <a href="/">Go back to home page</a>
+        </div>
+        
+        <form class="last-box" action="/api/url/getAuthPage" method="post" name="theform" autocomplete="off">
+            <div class="input-icon">
+                <i class="fa fa-link" aria-hidden="true"></i>
+                <input type="url" name="longLink" id="theform" placeholder="Enter your long url to shorten it..." autocomplete="off">
+                <button value="submit" type="submit">Trim</button>
+            </div>
+            
+        </form>
+
+        <table>
+            <tr>
+                <th id="first-child">Links</th>
+                <th>Views</th>
+                <th>Copy</th>
+                <th>Share</th>
+                <th>Delete</th>
+            </tr>
+            <tr>
+                <td>hjhx</td>
+                <td>hxshjs</td>
+                <td>jsjj</td>
+                <td>msxm</td>
+                <td>nhxhx</td>
+            </tr>
+        </table>
+
+        
+    </div>
+
+
+    <script>
+        const form = document.querySelector("form");
+        const table = document.querySelector("table");
+        
+        form.addEventListener("submit", async(e) => {
+            e.preventDefault();
+            const longLink = form.longLink.value;
+        
+            try {
+                const res = await fetch("/api/url/getAuthPage", {
+                    method: "POST",
+                    body: JSON.stringify({ longLink }),
+                    headers: { "Content-Type": "application/json" }
+                })
+                const data = await res.json();
+                console.log(data.shortLink);
+                if (data.shortLink) {
+                    const newrow = document.createElement("tr");
+                    const shortLinkCell = document.createElement("td");
+                    const viewscell = document.createElement("td");
+
+                    shortLinkCell.textContent = data.shortLink;
+                    viewscell.textContent = data.noOfClicks;
+
+                    newrow.appendChild(shortLinkCell);
+                    newrow.appendChild(viewscell);
+                    table.appendChild(newrow);
+                }
+
+                form.input.value = " ";
+                
+                
+
+            } catch (error) {
+                console.log(error);
+            }
+
+
+        })
+
+    </script>
+
+
+    
+    
+</body>
+</html>
