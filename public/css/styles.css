@@ -129,3 +129,52 @@ form.last-box a:hover {
     background: rgba(61, 79, 145, 0.1);
     color: #3D4F91;
 }
+
+/* Media queries */
+@media only screen and (max-width: 600px) {
+    /* Adjustments for smaller screens */
+    html, body {
+        max-width: 100%;
+    }
+    #logo {
+        padding-left: 10px;
+    }
+
+    .header {
+        padding: 0 5% 30px 5%;
+    }
+
+    .auth {
+        margin-right: 10px;
+        padding: 5px;
+        font-size: 0.8rem;
+    }
+    .middle-box {
+        padding: 0;
+        max-width: 100%;
+    }
+    .middle-box-one {
+        font-size: 8px;
+    }
+
+    p {
+        width: 100%;
+    }
+
+    img {
+        display: none;
+    }
+
+    form.last-box a {
+        font-size: 1.2rem;
+        width: 40%;
+    }
+}
+
+
+
+
+
+
+
+
