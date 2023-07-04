@@ -3,19 +3,25 @@ import cookieParser from "cookie-parser";
 import connectToDb from "./dbConnection/connectToDb";
 import "dotenv/config";
 import path from "path";
+//import cors from "cors";
 
 import linkRoute  from "./routes/linkRoute";
 import redirectRoute from "./routes/redirectLink";
 import userRoute from "./routes/userRoute";
 import { auth } from "./middlewares/auth";
 
-
-
 const app: Application = express();
 const port = process.env.PORT;
 app.set('views', path.join(__dirname, "views"));
 app.set('view engine', 'ejs');
 
+// const corsOptions ={
+//     origin:'*', 
+//     credentials:true,            //access-control-allow-credentials:true
+//     optionSuccessStatus:200,
+//  }
+ 
+// app.use(cors(corsOptions)) // Use this after the variable declaration
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

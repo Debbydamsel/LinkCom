@@ -15,8 +15,10 @@ const baseUrl: string = process.env.BASE_URL as string;
 export const getUrlPage = async(req: Request, res: Response) => {
     const token = req.cookies.jwt;
 
-    const findUser = jwt.verify(token, jwToken) as jwt.JwtPayload;
-    const getCurrentUser = await User.findOne({ user: findUser._id });
+    const user = jwt.verify(token, jwToken) as jwt.JwtPayload;
+    //console.log(user);
+    const getCurrentUser = await User.findById(user._id);
+    //console.log(getCurrentUser);
     res.render("linkHistory", { currentUser: getCurrentUser?.username });
     
 }
@@ -68,7 +70,7 @@ export const getShortenedUrl = async(req: Request, res: Response) => {
                 
             }
         } catch (error) {
-            console.log(error);
+            //console.log(error);
               res.status(500).json({message:"An error occured while generating a shortened link", error});  
         }
         

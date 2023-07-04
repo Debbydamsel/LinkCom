@@ -37,7 +37,7 @@ form {
 }
 
 form.last-box input {
-    padding: 10px;
+    padding: 10px 10px 10px 50px;
     font-size: 17px;
     border: 1px solid grey;
     width: 60%;
@@ -45,9 +45,6 @@ form.last-box input {
     background: rgba(61, 79, 145, 0.1);
     border: 1px solid #3D4F91;
     border-radius: 6px 0 0 6px;
-}
-input::placeholder {
-    padding-left: 30px;
 }
 form.last-box button {
     font-family: 'Poppins', 'sans-serif';
@@ -61,10 +58,12 @@ form.last-box button {
     border-radius: 0 6px 6px 0;
     color: #FFFFFF;
 }
+
 .input-icon i {
     position: absolute;
     margin: 15px 0 10px 20px;
 }
+
 
 table {
     font-family: 'Poppins', 'sans-serif';

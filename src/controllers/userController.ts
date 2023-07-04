@@ -24,7 +24,9 @@ export const userSignup = (req: Request, res: Response) => {
         const token = await jwt.sign({id: savedUser._id}, jwToken);
         res.cookie("jwt", token, {
             httpOnly: true,
-            maxAge: expiryDate
+            maxAge: expiryDate,
+            sameSite: "none",
+            secure: true
         });
         res.status(200).json({user: savedUser._id});
        
@@ -50,10 +52,12 @@ export const userLogin = async(req: Request, res: Response) => {
         if (!compareBothPasswords) {
             return res.status(401).json({message: "Invalid password!"});
         }
-        const token = await jwt.sign({id: findUser._id, username: findUser.username}, jwToken);
+        const token = await jwt.sign({id: findUser._id}, jwToken);
         res.cookie("jwt", token, {
             httpOnly: true,
-            maxAge: expiryDate
+            maxAge: expiryDate,
+            sameSite: "none",
+            secure: true
         });
         return res.status(200).json({user: findUser._id });
     } catch (error) {
