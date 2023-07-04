@@ -85,8 +85,9 @@
                                 mode:"no-cors",
                                 credentials: "include",
                                 headers: {
-                                    sameSite: "none"
-                                }
+                                SameSite: "None", // Set the SameSite attribute
+                                Secure: true, // Ensure the cookie is sent over a secure (HTTPS) connection
+                            }
 
 
                             });
