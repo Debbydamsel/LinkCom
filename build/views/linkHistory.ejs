@@ -39,13 +39,7 @@
                 <th>Share</th>
                 <th>Delete</th>
             </tr>
-            <tr>
-                <td>hjhx</td>
-                <td>hxshjs</td>
-                <td>jsjj</td>
-                <td>msxm</td>
-                <td>nhxhx</td>
-            </tr>
+           
         </table>
 
         
@@ -67,28 +61,47 @@
                     headers: { "Content-Type": "application/json" }
                 })
                 const data = await res.json();
-                console.log(data.shortLink);
+                //console.log(data.shortLink);
                 if (data.shortLink) {
                     const newrow = document.createElement("tr");
                     const shortLinkCell = document.createElement("td");
                     const viewscell = document.createElement("td");
+                    const linkcell = document.createElement("a");
 
-                    shortLinkCell.textContent = data.shortLink;
+                    linkcell.target = "_blank";
+                    linkcell.href = "/" + data.urlId; // Set the href attribute to the short link
+                    linkcell.innerText = data.shortLink; // Set the visible text of the link
+
+                    shortLinkCell.appendChild(linkcell); // Append the linkcell to the shortLinkCell
                     viewscell.textContent = data.noOfClicks;
 
                     newrow.appendChild(shortLinkCell);
                     newrow.appendChild(viewscell);
                     table.appendChild(newrow);
+
+                    linkcell.addEventListener("click", async(e) => {
+                        e.preventDefault();
+                        try {
+                            const res = await fetch("/" + data.urlId, {
+                                mode:"no-cors",
+                                credentials: "include",
+                                headers: {
+                                    sameSite: "none"
+                                }
+
+
+                            });
+                        } catch (error) {
+                            console.log(error);
+                        }
+                    })
+                    
                 }
-
-                form.input.value = " ";
-                
-                
-
             } catch (error) {
                 console.log(error);
             }
 
+            form.longLink.value = " ";
 
         })
 
